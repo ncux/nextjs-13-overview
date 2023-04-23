@@ -1,11 +1,19 @@
+import { Suspense } from "react";
+import Repo from "@/app/components/repo";
+import RepoDirs from "@/app/components/repo-dirs";
+
 const RepoNamePage = ({ params }) => {
 
     const { repoName } = params;
 
     return (
         <div className={`card`}>
-            <h2>{ repoName }</h2>
-            <p>details</p>
+            <Suspense fallback={<div>Loading repo...</div>}>
+                <Repo name={ repoName } />
+            </Suspense>
+            <Suspense fallback={<div>Loading repos...</div>}>
+                <RepoDirs name={ repoName } />
+            </Suspense>
         </div>
     );
 
