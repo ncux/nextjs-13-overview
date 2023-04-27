@@ -5,7 +5,7 @@ const API_URL = `https://api.github.com/repos/bradtraversy/`;
 const getRepoContents = async (name) => {
     try {
         await new Promise((resolve) => setTimeout(resolve, 3000)); // simulate a 3s delay
-        const res = await fetch(`${API_URL}${name}/contents`);
+        const res = await fetch(`${API_URL}${name}/contents`, { next: { revalidate: 60 } });
         return await res.json();
     } catch (e) {
         console.log(e);

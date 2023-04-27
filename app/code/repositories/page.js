@@ -5,7 +5,7 @@ const repos_URL = `https://api.github.com/users/bradtraversy/repos`;
 
 const fetchRepositories = async () => {
     try {
-        const res = await fetch(repos_URL);
+        const res = await fetch(repos_URL, { next: { revalidate: 60 } }); // { next: { revalidate: 60 } } will cache for 60s
         return await res.json();
     } catch (e) {
         console.log(e);

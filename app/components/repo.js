@@ -4,7 +4,7 @@ import { FaStar, FaCodeBranch, FaEye } from "react-icons/all";
 const API_URL = `https://api.github.com/repos/bradtraversy/`;
 const getRepo = async (name) => {
     try {
-        const res = await fetch(`${API_URL}${name}`);
+        const res = await fetch(`${API_URL}${name}`, { next: { revalidate: 60 } });
         return await res.json();
     } catch (e) {
         console.log(e);
