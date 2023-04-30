@@ -1,19 +1,6 @@
 import Link from "next/link";
 
-const API_URL = `http://localhost:3000/api/courses`;
-const getCourses = async () => {
-    try {
-        const res = await fetch(`${API_URL}`, { next: { revalidate: 60 } });
-        return await res.json();
-    } catch (e) {
-        console.log(e);
-    }
-};
-
-const Courses = async () => {
-
-    const courses = await getCourses();
-    console.log(courses);
+const Courses = ({ courses }) => {
 
     return (
         <div className={`courses`}>
