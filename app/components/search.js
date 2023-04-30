@@ -15,7 +15,7 @@ const SearchCourse = () => {
             setLoading(true);
             if (query.length > 0) {
                 console.log(query);
-                //const res = await fetch(`${API_URL}${query}`, { next: { revalidate: 60 } });
+                //npm i daisyuiconst res = await fetch(`${API_URL}${query}`, { next: { revalidate: 60 } });
             }
             // const data = await res.json();
             // setCourses(data);
