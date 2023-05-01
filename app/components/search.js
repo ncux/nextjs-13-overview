@@ -1,12 +1,12 @@
 'use client';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CoursesContext } from "@/app/context/courses";
 import Loading from "@/app/loading";
-import Courses from "@/app/components/courses";
 
 const SearchCourse = () => {
 
     const [query, setQuery] = useState('');
-    const [loading, setLoading] = useState(false);
+    const { courses, loading, setCourses, setLoading } = useContext(CoursesContext);
 
     const API_URL = `http://localhost:3000/api/courses/search?query=`;
     const searchCourse = async (e) => {
@@ -15,7 +15,8 @@ const SearchCourse = () => {
             setLoading(true);
             if (query.length > 0) {
                 console.log(query);
-                //npm i daisyuiconst res = await fetch(`${API_URL}${query}`, { next: { revalidate: 60 } });
+                const res = await fetch(`${API_URL}${query}`, { next: { revalidate: 60 } });
+                const data = await res.json();
             }
             // const data = await res.json();
             // setCourses(data);

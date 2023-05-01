@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { CoursesContext } from "@/app/context/courses";
 
-const Courses = ({ courses }) => {
+const Courses = () => {
+
+    const { courses } = useContext(CoursesContext);
 
     return (
         <div className={`courses`}>

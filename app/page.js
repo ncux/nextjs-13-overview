@@ -1,17 +1,16 @@
 'use client';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loading from "@/app/loading";
 import SearchCourse from "@/app/components/search";
 import Courses from "@/app/components/courses";
+import { CoursesContext } from "@/app/context/courses";
 
 const HomePage = () => {
 
-    const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const { loading, setCourses, setLoading } = useContext(CoursesContext);
 
     const API_URL = `http://localhost:3000/api/courses`;
 
-    //useEffect(() => getCourses(), []);
     useEffect(() => {
         const getCourses = async () => {
             try {
@@ -34,7 +33,7 @@ const HomePage = () => {
             <h2>Pussy</h2>
             <>
                <SearchCourse />
-               <Courses courses={ courses } />
+               <Courses />
             </>
         </>
     )

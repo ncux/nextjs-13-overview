@@ -1,5 +1,6 @@
 import { Poppins } from 'next/font/google';
 import './globals.css'
+import { CoursesState } from "@/app/context/courses";
 import Header from "@/app/components/header";
 
 const poppinsFont = Poppins({
@@ -15,12 +16,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={ poppinsFont.className }>
-      <Header />
-          <main className={`container`}>
-            {children}
-          </main>
-      </body>
+      <CoursesState>
+          <body className={ poppinsFont.className }>
+              <Header />
+              <main className={`container`}>
+                  {children}
+              </main>
+          </body>
+      </CoursesState>
     </html>
   )
 }
