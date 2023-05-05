@@ -16,14 +16,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <CoursesState>
           <body className={ poppinsFont.className }>
-              <Header />
-              <main className={`container`}>
-                  {children}
-              </main>
+              <CoursesState>
+                  <Header />
+                  <main className={`container`}>
+                      {children}
+                  </main>
+              </CoursesState>
           </body>
-      </CoursesState>
     </html>
   )
 }
