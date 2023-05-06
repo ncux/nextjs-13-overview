@@ -1,25 +1,24 @@
 'use client';
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CoursesContext } from "@/app/context/courses";
 import Loading from "@/app/loading";
 
 const SearchCourse = () => {
 
-    const [query, setQuery] = useState('');
-    const { courses, loading, setCourses, setLoading } = useContext(CoursesContext);
+    const { query, setQuery, loading, setCourses, setLoading } = useContext(CoursesContext);
 
     const API_URL = `http://localhost:3000/api/courses/search?query=`;
     const searchCourse = async (e) => {
         e.preventDefault();
         try {
             setLoading(true);
-            if (query.length > 0) {
+            if (query.length > 2) {
                 console.log(query);
+                setQuery(query);
                 const res = await fetch(`${API_URL}${query}`, { next: { revalidate: 60 } });
                 const data = await res.json();
+                setCourses(data);
             }
-            // const data = await res.json();
-            // setCourses(data);
             setLoading(false);
         } catch (e) {
             console.log(e);
